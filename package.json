@@ -1,0 +1,21 @@
+{
+  "name": "rocket-app",
+  "version": "1.0.0",
+  "description": "Backend service for tracking rocket state from message streams",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "shared"
+  ],
+  "scripts": {
+    "install-all": "npm install && npm install --workspace=services/message-ingestion && npm install --workspace=services/rocket-api && npm install --workspace=shared",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "dev:ingestion": "npm run dev --workspace=services/message-ingestion",
+    "dev:api": "npm run dev --workspace=services/rocket-api"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}

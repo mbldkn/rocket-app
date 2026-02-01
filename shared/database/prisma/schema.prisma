@@ -1,0 +1,57 @@
+// learn more about Prisma in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../../dev.db"
+}
+
+model Rocket {
+  id                String    @id @default(uuid())
+  channel           String    @unique
+  type              String
+  currentSpeed      Int
+  mission           String
+  status            String    // 'ACTIVE' | 'EXPLODED'
+  explosionReason   String?
+  lastMessageNumber Int
+  lastMessageTime   DateTime
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  
+  messages          Message[]
+  
+  @@index([channel])
+  @@index([status])
+}
+
+model Message {
+  id            String   @id @default(uuid())
+  channel       String
+  messageNumber Int
+  messageTime   DateTime
+  messageType   String
+  payload       String   // JSON as string for SQLite
+  processedAt   DateTime @default(now())
+  
+  rocket        Rocket   @relation(fields: [channel], references: [channel], onDelete: Cascade)
+  
+  @@unique([channel, messageNumber])
+  @@index([channel, messageNumber])
+}
+
+model BufferedMessage {
+  id            String   @id @default(uuid())
+  channel       String
+  messageNumber Int
+  messageTime   DateTime
+  messageType   String
+  payload       String
+  bufferedAt    DateTime @default(now())
+  
+  @@unique([channel, messageNumber])
+  @@index([channel, messageNumber])
+}
