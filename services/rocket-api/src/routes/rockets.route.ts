@@ -10,12 +10,6 @@ const rocketService: RocketService = new RocketService(rocketRepository);
 const rocketController: RocketController = new RocketController(rocketService);
 
 /**
- * GET /health
- * Health check endpoint
- */
-router.get('/health', (req, res) => rocketController.healthCheck(req, res));
-
-/**
  * GET /api/rockets/stats
  * Get rocket statistics
  */
