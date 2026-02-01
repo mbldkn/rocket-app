@@ -130,18 +130,6 @@ npm test
 cd services/rocket-api
 npm test
 ```
-
-**Expected Output:**
-```
- PASS  tests/message-processor.test.ts
- PASS  tests/error-handler.test.ts
- PASS  tests/api.integration.test.ts
-
-Test Suites: 3 passed, 3 total
-Tests:       45 passed, 45 total
-Coverage:    82% statements, 71% branches
-```
-
 ---
 
 ## Troubleshooting
@@ -254,5 +242,4 @@ http://localhost:3000/api/rockets/stats
   }
 }
 ```
-
 ---
