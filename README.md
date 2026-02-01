@@ -1,6 +1,6 @@
 # Rocket App
 
-A real-time rocket telemetry tracking system built with Node.js/TypeScript microservices architecture, featuring the Repository pattern for clean data access abstraction.
+A real-time rocket tracking system built with Node.js/TypeScript microservices architecture, featuring the Repository pattern for clean data access abstraction.
 
 ## 📋 Table of Contents
 - [Overview](#overview)
@@ -17,7 +17,7 @@ A real-time rocket telemetry tracking system built with Node.js/TypeScript micro
 ## Overview
 
 This system tracks rocket state changes in real-time by:
-1. **Ingesting** telemetry messages about rocket events (launch, speed changes, explosions, mission changes)
+1. **Ingesting** messages about rocket events (launch, speed changes, explosions, mission changes)
 2. **Maintaining** current state for each rocket in a database
 3. **Providing** a REST API to query rocket information
 
@@ -45,7 +45,7 @@ This system tracks rocket state changes in real-time by:
 │   └──────────┬──────────────────┘   │
 │              │                      │
 │   ┌──────────▼──────────────────┐   │
-│   │  Repositories (DI)          │   │
+│   │  Repositories               │   │
 │   │  - RocketRepository         │   │
 │   │  - MessageRepository        │   │
 │   │  - BufferedMessageRepository│   │
@@ -99,7 +99,7 @@ This system tracks rocket state changes in real-time by:
 ### Installation
 
 ```bash
-# 1. Navigate to project
+# 1. Navigate to the project
 cd rocket-app
 
 # 2. Install shared dependencies
@@ -467,8 +467,7 @@ rocket-app/
 ## Documentation
 
 - **README.md** (this file) - Overview and API documentation
-- **QUICK_START.md** - 5-minute setup guide
-
+- **QUICK_START.md** - Quick setup guide
 ---
 
 ## Tech Stack
@@ -480,6 +479,4 @@ rocket-app/
 - **Validation:** Zod
 - **Logging:** Winston
 - **Testing:** Jest, Supertest
-- **Pattern:** Repository Pattern with Dependency Injection
-
 ---
