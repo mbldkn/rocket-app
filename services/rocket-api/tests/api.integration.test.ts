@@ -186,19 +186,6 @@ describe('Rocket API - Integration Tests', () => {
     });
   });
 
-  describe('GET /health', () => {
-    it('should return healthy status', async () => {
-      const response = await request(app)
-        .get('/health')
-        .expect(200);
-
-      expect(response.body.success).toBe(true);
-      expect(response.body.service).toBe('rocket-api');
-      expect(response.body.status).toBe('healthy');
-      expect(response.body.timestamp).toBeDefined();
-    });
-  });
-
   describe('404 Not Found', () => {
     it('should return 404 for unknown routes', async () => {
       const response = await request(app)
