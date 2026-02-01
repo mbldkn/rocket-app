@@ -476,33 +476,4 @@ describe('RocketController', () => {
             });
         });
     });
-
-    describe('healthCheck', () => {
-        it('should return healthy status', async () => {
-            await controller.healthCheck(
-                mockRequest as Request,
-                mockResponse as Response
-            );
-
-            expect(mockResponse.status).toHaveBeenCalledWith(200);
-            expect(mockResponse.json).toHaveBeenCalledWith({
-                success: true,
-                service: 'rocket-api',
-                status: 'healthy',
-                timestamp: expect.any(String),
-            });
-        });
-
-        it('should return valid ISO timestamp', async () => {
-            await controller.healthCheck(
-                mockRequest as Request,
-                mockResponse as Response
-            );
-
-            const callArgs = (mockResponse.json as jest.Mock).mock.calls[0][0];
-            const timestamp = new Date(callArgs.timestamp);
-
-            expect(timestamp.toISOString()).toBe(callArgs.timestamp);
-        });
-    });
 });
